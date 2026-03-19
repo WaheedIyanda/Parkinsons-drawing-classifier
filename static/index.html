@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PakinsonTrace — Parkinson's Screening Tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+            <path d="M9 16c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="16" cy="20" r="2.5" fill="currentColor"/>
+            <path d="M16 17.5v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="logo-text">Pakison Trace</span>
+      </div>
+      <div class="header-right">
+        <span class="nav-label">Parkinson's Screening Tool</span>
+        <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <p class="hero-eyebrow">Deep Learning-Powered Screening</p>
+      <h1 class="hero-title">Detect early signs of <em>Parkinson's disease</em></h1>
+      <p class="hero-sub">Upload a spiral and wave drawing. Our deep learning models analyze tremor patterns and motor dysfunction indicators in seconds.</p>
+    </section>
+
+    <!-- Main Card -->
+    <div class="card">
+
+      <!-- STEP 1 -->
+      <div class="card-section">
+        <div class="step-label">
+          <span class="step-num">01</span>
+          <span class="step-text">Upload Your Drawings</span>
+        </div>
+
+        <div class="upload-row">
+
+          <!-- Spiral -->
+          <div class="upload-zone" id="zone1"
+               onclick="triggerInput(1)"
+               ondragover="onDragOver(event,1)"
+               ondragleave="onDragLeave(1)"
+               ondrop="onDrop(event,1)">
+            <input type="file" id="file1" accept="image/*" onchange="onFileChange(1,this)" />
+            <div class="zone-empty" id="empty1">
+              <div class="zone-icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="21" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 3"/>
+                  <path d="M24 31V19M18 25l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <p class="zone-type">Spiral Drawing</p>
+              <p class="zone-hint">Drag & drop or click to browse</p>
+            </div>
+            <div class="zone-preview" id="preview1">
+              <img id="img1" src="" alt="Spiral" />
+              <div class="preview-overlay">
+                <span class="preview-name" id="name1"></span>
+                <div class="preview-actions">
+                  <button class="btn-sm btn-white" onclick="triggerInput(1);event.stopPropagation()">Change</button>
+                  <button class="btn-sm btn-danger" onclick="clearFile(event,1)">Remove</button>
+                </div>
+              </div>
+              <span class="preview-badge">Spiral</span>
+            </div>
+          </div>
+
+          <!-- Wave -->
+          <div class="upload-zone" id="zone2"
+               onclick="triggerInput(2)"
+               ondragover="onDragOver(event,2)"
+               ondragleave="onDragLeave(2)"
+               ondrop="onDrop(event,2)">
+            <input type="file" id="file2" accept="image/*" onchange="onFileChange(2,this)" />
+            <div class="zone-empty" id="empty2">
+              <div class="zone-icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="21" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 3"/>
+                  <path d="M24 31V19M18 25l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <p class="zone-type">Wave Drawing</p>
+              <p class="zone-hint">Drag & drop or click to browse</p>
+            </div>
+            <div class="zone-preview" id="preview2">
+              <img id="img2" src="" alt="Wave" />
+              <div class="preview-overlay">
+                <span class="preview-name" id="name2"></span>
+                <div class="preview-actions">
+                  <button class="btn-sm btn-white" onclick="triggerInput(2);event.stopPropagation()">Change</button>
+                  <button class="btn-sm btn-danger" onclick="clearFile(event,2)">Remove</button>
+                </div>
+              </div>
+              <span class="preview-badge">Wave</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- STEP 2 -->
+      <div class="card-section">
+        <div class="step-label">
+          <span class="step-num">02</span>
+          <span class="step-text">Run Analysis</span>
+        </div>
+        <button class="btn-analyze" id="analyzeBtn" onclick="runAnalysis()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <span id="btnText">Analyze Drawings</span>
+          <span class="spinner" id="spinner"></span>
+        </button>
+        <p class="status-line" id="statusLine">Upload both drawings to begin</p>
+      </div>
+
+      <!-- STEP 3 (hidden until results) -->
+      <div id="resultsBlock" style="display:none">
+        <div class="divider"></div>
+        <div class="card-section">
+          <div class="step-label">
+            <span class="step-num">03</span>
+            <span class="step-text">Results</span>
+          </div>
+
+          <div class="results-grid">
+
+            <!-- Spiral ring -->
+            <div class="score-card">
+              <p class="score-label">Spiral Model</p>
+              <div class="ring-wrap">
+                <svg viewBox="0 0 80 80" class="ring-svg">
+                  <circle class="ring-track" cx="40" cy="40" r="34"/>
+                  <circle class="ring-fill" id="ring1" cx="40" cy="40" r="34"/>
+                </svg>
+                <span class="ring-val" id="val1">—</span>
+              </div>
+              <p class="score-sub">Parkinson's Probability</p>
+            </div>
+
+            <!-- Centre final risk -->
+            <div class="score-card score-main">
+              <p class="score-label">Final Risk Score</p>
+              <div class="final-num">
+                <span id="finalPct">—</span><span class="final-unit">%</span>
+              </div>
+              <div class="risk-badge" id="riskBadge">Awaiting</div>
+              <div class="bar-wrap">
+                <div class="bar-track"><div class="bar-fill" id="barFill"></div></div>
+                <div class="bar-labels"><span>Low</span><span>Moderate</span><span>High</span></div>
+              </div>
+            </div>
+
+            <!-- Wave ring -->
+            <div class="score-card">
+              <p class="score-label">Wave Model</p>
+              <div class="ring-wrap">
+                <svg viewBox="0 0 80 80" class="ring-svg">
+                  <circle class="ring-track" cx="40" cy="40" r="34"/>
+                  <circle class="ring-fill" id="ring2" cx="40" cy="40" r="34"/>
+                </svg>
+                <span class="ring-val" id="val2">—</span>
+              </div>
+              <p class="score-sub">Parkinson's Probability</p>
+            </div>
+
+          </div>
+
+          <div class="recommendation" id="recommendation"></div>
+          <p class="disclaimer">This tool is for screening purposes only and does not constitute a medical diagnosis. Consult a licensed neurologist.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
