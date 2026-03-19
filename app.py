@@ -53,13 +53,17 @@ def create_model():
 
 
 # ── LOAD MODELS — exact copy of your Colab load code ─────────────
+import os
+BASE_DIR          = os.path.dirname(os.path.abspath(__file__))
+SPIRAL_MODEL_PATH = os.path.join(BASE_DIR, "spiral_specialist.pth")
+WAVE_MODEL_PATH   = os.path.join(BASE_DIR, "wave_specialist_80.pth")
 
 print("Loading models...")
 
 spiral_model = create_model()
 spiral_model.load_state_dict(
     torch.load(
-        r"C:\Users\iyand\projects\Parkison\spiral_specialist.pth",
+        SPIRAL_MODEL_PATH,
         map_location=device
     )
 )
@@ -69,7 +73,7 @@ print("  ✓ spiral_specialist loaded")
 wave_model = create_model()
 wave_model.load_state_dict(
     torch.load(
-        r"C:\Users\iyand\projects\Parkison\wave_specialist_80.pth",
+        WAVE_MODEL_PATH,
         map_location=device
     )
 )

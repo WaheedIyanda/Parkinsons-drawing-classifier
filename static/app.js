@@ -1,6 +1,6 @@
 // ── CONFIG ──────────────────────────────────────────────────────
 // FastAPI backend URL — must match where uvicorn is running
-const API = 'http://localhost:8080';
+const API = '';
 
 // ── STATE ───────────────────────────────────────────────────────
 const files   = { 1: null, 2: null };
