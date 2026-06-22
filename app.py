@@ -95,7 +95,7 @@ test_transform = transforms.Compose([
 ])
 
 
-# ── PREDICT — exact copy of your Colab predict_image() ───────────
+# ── PREDICT —predict_image() ───────────
 
 def predict_image(image_bytes: bytes, model) -> float:
     """Returns Parkinson's probability (0.0 to 1.0) — same as Colab."""
