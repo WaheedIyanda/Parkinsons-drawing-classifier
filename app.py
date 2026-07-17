@@ -68,7 +68,7 @@ spiral_model.load_state_dict(
     )
 )
 spiral_model.eval()
-print("  ✓ spiral_specialist loaded")
+print("  [OK] spiral_specialist loaded")
 
 wave_model = create_model()
 wave_model.load_state_dict(
@@ -78,7 +78,7 @@ wave_model.load_state_dict(
     )
 )
 wave_model.eval()
-print("  ✓ wave_specialist loaded")
+print("  [OK] wave_specialist loaded")
 
 print("Models ready!\n")
 
@@ -158,10 +158,10 @@ async def analyze(
         print(f"Final Averaged Risk          : {final_prob*100:.2f}%")
 
         if final_prob > 0.5:
-            print("⚠ High Parkinson Risk")
+            print("[WARNING] High Parkinson Risk")
             risk_level = "High Risk"
         else:
-            print("✅ Low Parkinson Risk")
+            print("[OK] Low Parkinson Risk")
             risk_level = "Low Risk" if final_prob < 0.4 else "Moderate Risk"
 
         return AnalysisResult(
